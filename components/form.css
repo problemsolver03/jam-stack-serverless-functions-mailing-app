@@ -47,3 +47,17 @@ h3 {
 body {
   background-color: #ececec;
 }
+
+.success {
+  background-color: green;
+  color: #fff;
+  padding: 16px;
+  text-align: center;
+}
+
+.error {
+  background-color: red;
+  color: #fff;
+  padding: 16px;
+  text-align: center;
+}
