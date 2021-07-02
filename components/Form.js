@@ -33,10 +33,24 @@ const Form = () => {
   };
 
   const setStatus = (status) => dispatch({ type: "updateStatus", status });
+
+
   const submiHandler = (event) => {
     event.preventDefault();
     console.log(state);
     setStatus("PENDING");
+
+    fetch('/api/contact',{
+      method:'POST',
+      body:JSON.stringify(state)})
+      .then(response=>response.json())
+      .then(response=>{
+        setStatus('SUCCESS');
+        console.log(response)})
+       .catch(err=>{
+        setStatus('ERROR');
+        console.log(err)
+      })
   };
 
   if (state.status === "SUCCESS") {
@@ -66,6 +80,7 @@ const Form = () => {
             name="name"
             value={state.name}
             onChange={udpateValue("name")}
+            required
           />
         </label>
         <label>
@@ -75,6 +90,7 @@ const Form = () => {
             name="email"
             value={state.email}
             onChange={udpateValue("email")}
+            required
           />
         </label>
         <label>
